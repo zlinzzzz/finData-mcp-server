@@ -1,0 +1,1 @@
+from .getData import sayHiWind

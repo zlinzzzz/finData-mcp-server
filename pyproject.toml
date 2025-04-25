@@ -1,0 +1,11 @@
+[project]
+name = "findata"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "pandas>=2.2.3",
+    "tushare>=1.4.21",
+]
