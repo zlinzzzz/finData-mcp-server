@@ -1,14 +1,35 @@
-# 概述（Overview）
+<h1 align="center">
+<img src="assets/logo.png" width="400" align=center/>
+</h1><br>
 
-finData是一个开源的金融数据查询的MCP(Model Context Protocol) Server，支持Tushare、Wind、通联等多种数据供应商接口，帮助用户快速的构建自己的智能体。
+<div align="center">
+
+[![License](https://img.shields.io/badge/License-Apache--2.0-green)]()
+[![Python Versions](https://img.shields.io/badge/python-3.11-blue)]()
+[![Tushare](https://img.shields.io/badge/Tushare-purple)]()
+
+</div>
+
+<div class="toc" align="center">
+  <a href="#概述">概述</a> •
+  <a href="#演示">演示</a> •
+  <a href="#快速开始">快速开始</a> •
+  <a href="#已支持的数据供应商">已支持的数据供应商</a> •
+  <a href="#工具列表">工具列表</a> 
+</div>
 
 
-# 演示（Demo）
+# 概述
+
+finData是一个开源的金融数据查询Model Context Protocol(MCP) Server，向大模型提供专业级金融数据访问的能力。支持Tushare、Wind、通联等多种数据供应商接口，助力用户在AI应用中快速获取金融数据。
+
+
+# 演示
 ![演示](assets/demo.gif)
 
-# 快速开始（Quick Start）
+# 快速开始
 
-## 环境准备（Prerequisites）
+## 环境准备
 
 开始前，请完成下面的准备工作：
 
@@ -19,24 +40,24 @@ finData是一个开源的金融数据查询的MCP(Model Context Protocol) Server
 根据所使用的数据供应商，自行选择安装
 - tushare>=1.4.21
 
-## 配置MCP Server（Configure MCP Server）
+## 配置MCP Server
 
 使用`uv`安装finData MCP Server:
 
-```bash
+```JSON
 {
   "mcpServers": {
     "finData": {
       "command": "uv", 
       "args": [
         "--directory",
-        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata", # finData MCP Server所在目录
+        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata", // finData MCP Server所在目录
         "run",
         "server.py"
       ],
       "env": {
-        "DATA_API_TOKEN": "",  # 访问数据供应商的API Tokken
-        "PROVIDER": "tushare"  # 指定数据供应商
+        "DATA_API_TOKEN": "",  // 访问数据供应商的API Tokken
+        "PROVIDER": "tushare"  // 指定数据供应商
       }
     }
   }
@@ -49,7 +70,7 @@ finData是一个开源的金融数据查询的MCP(Model Context Protocol) Server
 
 - tushare
 
-# 工具（Tools）
+# 工具列表
 
 ## Tushare
 
@@ -78,3 +99,12 @@ finData是一个开源的金融数据查询的MCP(Model Context Protocol) Server
 - `cn_m` 获取货币供应量数据。
 - `sf_month` 获取社会融资数据。
 - `cn_pmi` 获取采购经理人指数(PMI)数据。
+
+# DataCanvas
+
+
+
+![datacanvas](https://raw.githubusercontent.com/DataCanvasIO/HyperTS/main/docs/static/images/dc_logo_1.png)
+
+本项目由[DataCanvas](https://datacanvas.com/)开源
+
