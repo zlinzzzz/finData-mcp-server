@@ -25,7 +25,8 @@ finData是一个开源的金融数据查询Model Context Protocol(MCP) Server，
 
 
 # 演示
-![演示](assets/demo.gif)
+
+https://github.com/user-attachments/assets/1a6d02af-22a3-44a0-ada7-a771a1c4818d
 
 # 快速开始
 
