@@ -1,49 +1,53 @@
 <h1 align="center">
-<img src="https://github.com/user-attachments/assets/5c6cadf7-b9b0-4204-af55-9116e8b1aa1f" width="400" align=center/>
+<img src="assets/logo.png" width="400" align=center/>
 </h1><br>
 
 <div align="center">
 
-[![License](https://img.shields.io/badge/License-Apache--2.0-green)]()
+[![English](https://img.shields.io/badge/English-Click-yellow
+)](README.md)
+[![English](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E7%82%B9%E5%87%BB%E6%9F%A5%E7%9C%8B-orange)](README_zh.md)
+[![License](https://img.shields.io/badge/License-Apache--2.0-green)](LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.11-blue)]()
 [![Tushare](https://img.shields.io/badge/Tushare-purple)]()
 
 </div>
 
 <div class="toc" align="center">
-  <a href="#概述">概述</a> •
-  <a href="#演示">演示</a> •
-  <a href="#快速开始">快速开始</a> •
-  <a href="#已支持的数据供应商">已支持的数据供应商</a> •
-  <a href="#工具列表">工具列表</a> 
+  <a href="#Overview">Overview</a> •
+  <a href="#Demonstration">Demo</a> •
+  <a href="#Quick-Start">Quick Start</a> •
+  <a href="#Supported-Data-Providers">Supported Data Providers</a> •
+  <a href="#Tools">Tools</a> 
 </div>
 
 
-# 概述
+# Overview
 
-finData是一个开源的金融数据查询Model Context Protocol(MCP) Server，向大模型提供专业级金融数据访问的能力。支持Tushare、Wind、通联等多种数据供应商接口，助力用户在AI应用中快速获取金融数据。
+FinData is an open-source Model Context Protocol(MCP) Server that provides professional financial data access capabilities for LLM. It supports various data providers such as Tushare, Wind, DataYes, etc. Enabling AI applications to quickly obtain financial data.
 
 
-# 演示
+# Demonstration
 
 https://github.com/user-attachments/assets/1a6d02af-22a3-44a0-ada7-a771a1c4818d
 
-# 快速开始
+# Quick Start
 
-## 环境准备
+## Prerequisites
 
-开始前，请完成下面的准备工作：
+Before getting started, please complete the following preparations:
 
 - python => 3.11
 - mcp[cli]>=1.6.0
 - pandas>=2.2.3
 
-根据所使用的数据供应商，自行选择安装
+Optional packages based on your data provider:
+
 - tushare>=1.4.21
 
-## 配置MCP Server
+## Configuration
 
-使用`uv`安装finData MCP Server:
+Install finData MCP Server using `uv`:
 
 ```JSON
 {
@@ -52,60 +56,60 @@ https://github.com/user-attachments/assets/1a6d02af-22a3-44a0-ada7-a771a1c4818d
       "command": "uv", 
       "args": [
         "--directory",
-        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata", // finData MCP Server所在目录
+        "/ABSOLUTE/PATH/TO/PARENT/FOLDER/finData-mcp-server/src/findata", 
         "run",
         "server.py"
       ],
       "env": {
-        "DATA_API_TOKEN": "",  // 访问数据供应商的API Tokken
-        "PROVIDER": "tushare"  // 指定数据供应商
+        "DATA_API_TOKEN": "",  // API Token for accessing data provider
+        "PROVIDER": "tushare"  // Specified data provider
       }
     }
   }
 }
 ```
 
-# 已支持的数据供应商
+# Supported Data Providers
 
-通过环境变量`PROVIDER`使用指定的供应商
+Set the `PROVIDER` environment variable to specify your provider:
 
 - tushare
 
-# 工具列表
+# Tools
 
 ## Tushare
 
-### 行情数据
+### Market Data
 
-- `daily` 获取股票未复权的日线行情数据。
+- `daily` Get unadjusted daily stock market data.
 
-### 基础数据
+### Fundamental Data
 
-- `stock_basic` 获取股票的名称、代码等基础信息。
-- `stock_company` 获取上市公司基础信息。
-- `bak_basic`  获取某支股票在指定时间范围内的基本面数据。
+- `stock_basic` Get stock basic information including name, code, etc.
+- `stock_company` Get listed company basic information.
+- `bak_basic`  Get fundamental data for specific stocks within a given time range.
  
-### 财务数据
+### Financial Data
 
-- `income` 获取上市公司润表数据。
-- `balancesheet` 获取上市公司资产负债表数据。
-- `cashflow` 获取上市公司现金流量表数据。
+- `income` Get company income statement data.
+- `balancesheet` Get company balance sheet data.
+- `cashflow` Get company cash flow statement data.
 
-### 宏观数据
+### Macroeconomic Data
 
-- `shibor_lpr` 获取LPR贷款基础利率。
-- `cn_gdp` 获取GDP数据。
-- `cn_cpi` 获取CPI居民消费价格数据。
-- `cn_ppi` 获取PPI工业生产者出厂价格指数数据。
-- `cn_m` 获取货币供应量数据。
-- `sf_month` 获取社会融资数据。
-- `cn_pmi` 获取采购经理人指数(PMI)数据。
+- `shibor_lpr` Get Loan Prime Rate (LPR) data.
+- `cn_gdp` Get Gross Domestic Product (GDP) data.
+- `cn_cpi` Get Consumer Price Index (CPI) data.
+- `cn_ppi` Get Producer Price Index (PPI) data.
+- `cn_m` Get Money Supply data.
+- `sf_month` Get Social Financing data.
+- `cn_pmi` Get Purchasing Managers' Index (PMI) data.
 
 # DataCanvas
 
 
-
 ![datacanvas](https://raw.githubusercontent.com/DataCanvasIO/HyperTS/main/docs/static/images/dc_logo_1.png)
 
-本项目由[DataCanvas](https://datacanvas.com/)开源
+This project is open-sourced by [DataCanvas](https://datacanvas.com/)
+
 
