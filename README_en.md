@@ -13,8 +13,8 @@
 <div class="toc" align="center">
   <a href="#Overview">Overview</a> •
   <a href="#Demonstration">Demo</a> •
-  <a href="#Quick Start">Quick Start</a> •
-  <a href="#Supported Data Providers">Supported Data Providers</a> •
+  <a href="#Quick-Start">Quick Start</a> •
+  <a href="#Supported-Data-Providers">Supported Data Providers</a> •
   <a href="#Tools">Tools</a> 
 </div>
 
