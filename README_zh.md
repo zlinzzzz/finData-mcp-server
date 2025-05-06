@@ -4,9 +4,14 @@
 
 <div align="center">
 
-[![License](https://img.shields.io/badge/License-Apache--2.0-green)]()
+
+[![English](https://img.shields.io/badge/English-Click-yellow
+)](README.md)
+[![English](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E7%82%B9%E5%87%BB%E6%9F%A5%E7%9C%8B-orange)](README_zh.md)
+[![License](https://img.shields.io/badge/License-Apache--2.0-green)](LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.11-blue)]()
 [![Tushare](https://img.shields.io/badge/Tushare-purple)]()
+
 
 </div>
 
