@@ -86,7 +86,7 @@ finData是一个开源的金融数据查询Model Context Protocol(MCP) Server，
  
 ### 财务数据
 
-- `income` 获取上市公司润表数据。
+- `income` 获取上市公司利润表数据。
 - `balancesheet` 获取上市公司资产负债表数据。
 - `cashflow` 获取上市公司现金流量表数据。
 
