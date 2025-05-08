@@ -47,7 +47,7 @@ Optional packages based on your data provider:
 
 ## Configuration
 
-Install finData MCP Server using `uv`:
+Install finData MCP Server with  `uv`:
 
 ```JSON
 {
