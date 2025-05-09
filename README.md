@@ -24,7 +24,9 @@
 
 # Overview
 
-FinData is an open-source Model Context Protocol(MCP) Server that provides professional financial data access capabilities for LLM. It supports various data providers such as Tushare, Wind, DataYes, etc. Enabling AI applications to quickly obtain financial data.
+**FinData** is an open-source **Model Context Protocol(MCP) Server** that provides professional financial data access capabilities for LLM. It supports various data providers such as **Tushare**, **Wind**, **DataYes**, etc. This enables AI applications to quickly retrieve financial data.
+
+Fully supports both **Stdio** and **SSE** transports, offering flexibility for different environments.
 
 
 # Demonstration
@@ -40,14 +42,17 @@ Before getting started, please complete the following preparations:
 - python => 3.11
 - mcp[cli]>=1.6.0
 - pandas>=2.2.3
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-Optional packages based on your data provider:
+Depending on your data provider, install optional packages such as:
 
 - tushare>=1.4.21
 
 ## Configuration
 
-Install finData MCP Server using `uv`:
+### Stdio Transport
+
+You will need to edit the MCP client configuration file to add finData:
 
 ```JSON
 {
@@ -68,6 +73,51 @@ Install finData MCP Server using `uv`:
   }
 }
 ```
+
+### SSE Transport
+
+Set the environment variables `DATA_API_TOKEN` and `PROVIDER` on the server hosting the MCP Server:
+
+   **Windows**
+   ```bash
+    set DATA_API_TOKEN=<API Token for accessing data provider>
+    set PROVIDER=<Specified data provider>
+   ```
+
+   **Linux**
+  ```bash
+    export DATA_API_TOKEN=<API Token for accessing data provider>
+    export PROVIDER=<Specified data provider>
+   ```
+
+Then, start the MCP Server:
+
+```bash
+uv run server.py --transport sse   
+```
+
+- Optional Arguments:
+  
+  `--sse-host` Host to bind SSE server to (default: localhost)
+
+  `--sse-port` Port for SSE server (default: 8000)
+
+ 
+Once the MCP Server is running, update your MCP client's configuration with the following settings to connect to it.
+
+```JSON
+{
+  "mcpServers": {
+    "finData": {
+      "name": "finData",
+      "type": "sse",
+      "baseUrl": "http://localhost:8000/sse"
+    }
+  }
+}
+```
+
+**Note:** Variable names in configuration files may vary slightly between MCP clients. Refer to each client's documentation for proper configuration.
 
 # Supported Data Providers
 

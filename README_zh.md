@@ -7,7 +7,7 @@
 
 [![English](https://img.shields.io/badge/English-Click-yellow
 )](README.md)
-[![English](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E7%82%B9%E5%87%BB%E6%9F%A5%E7%9C%8B-orange)](README_zh.md)
+[![Chinese](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-%E7%82%B9%E5%87%BB%E6%9F%A5%E7%9C%8B-orange)](README_zh.md)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](LICENSE)
 [![Python Versions](https://img.shields.io/badge/python-3.11-blue)]()
 [![Tushare](https://img.shields.io/badge/Tushare-purple)]()
@@ -26,8 +26,9 @@
 
 # 概述
 
-finData是一个开源的金融数据查询Model Context Protocol(MCP) Server，向大模型提供专业级金融数据访问的能力。支持Tushare、Wind、通联等多种数据供应商接口，助力用户在AI应用中快速获取金融数据。
+**finData**是一个开源的金融数据查询**Model Context Protocol(MCP) Server**，向大模型提供专业级金融数据访问的能力。支持**Tushare**、**Wind**、**通联**等多种数据供应商接口，助力用户在AI应用中快速获取金融数据。
 
+全面支持**Stdio**和**SSE**两种通信模式，灵活满足本地部署与远程调用等多样化的使用需求。
 
 # 演示
 
@@ -37,18 +38,21 @@ https://github.com/user-attachments/assets/1a6d02af-22a3-44a0-ada7-a771a1c4818d
 
 ## 环境准备
 
-开始前，请完成下面的准备工作：
+开始前，请先安装下列工具包：
 
 - python => 3.11
 - mcp[cli]>=1.6.0
 - pandas>=2.2.3
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-根据所使用的数据供应商，自行选择安装
+根据所使用的数据供应商，请自行选择安装
 - tushare>=1.4.21
 
 ## 配置MCP Server
 
-使用`uv`安装finData MCP Server:
+### Stdio模式
+
+将下面的内容添加到MCP client的配置文件中来调用MCP Server。
 
 ```JSON
 {
@@ -62,13 +66,57 @@ https://github.com/user-attachments/assets/1a6d02af-22a3-44a0-ada7-a771a1c4818d
         "server.py"
       ],
       "env": {
-        "DATA_API_TOKEN": "",  // 访问数据供应商的API Tokken
+        "DATA_API_TOKEN": "",  // 访问数据供应商的API Token
         "PROVIDER": "tushare"  // 指定数据供应商
       }
     }
   }
 }
 ```
+
+### SSE模式
+
+在运行MCP Server的服务器上，设置数据供应商相关的环境变量`DATA_API_TOKEN`和`PROVIDER`：
+
+   **Windows**
+   ```bash
+    set DATA_API_TOKEN=<访问数据供应商的API Token>
+    set PROVIDER=<指定数据供应商>
+   ```
+
+   **Linux**
+  ```bash
+    export DATA_API_TOKEN=<访问数据供应商的API Token>
+    export PROVIDER=<指定数据供应商>
+   ```
+
+然后启动MCP Server：
+  
+```bash
+uv run server.py --transport sse   
+```
+
+- 可选参数
+  
+  `--sse-host` SSE服务绑定的主机，默认为localhost
+
+  `--sse-port` SSE服务端口，默认为8000
+
+  
+MCP Server启动成功后，将下面的内容添加到MCP client的配置文件中来调用MCP Server。不同client配置文件中的变量名会有细微的差异，请根据client的说明进行调整。
+
+```JSON
+{
+  "mcpServers": {
+    "finData": {
+      "name": "finData",
+      "type": "sse",
+      "baseUrl": "http://localhost:8000/sse"
+    }
+  }
+}
+```
+
 
 # 已支持的数据供应商
 
